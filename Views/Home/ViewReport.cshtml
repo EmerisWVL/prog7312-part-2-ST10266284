@@ -1,0 +1,70 @@
+@model MunicipalServicesApp.Models.Report
+@{
+    ViewData["Title"] = "View Report Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary animate__animated animate__fadeIn">Your Submitted Report</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show animate__animated animate__bounceIn" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card mt-4 animate__animated animate__fadeInUp">
+        <div class="card-header bg-primary text-white">
+            <h5>Report Details</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Location</dt>
+                <dd class="col-sm-9">@Model.Location</dd>
+
+                <dt class="col-sm-3">Category</dt>
+                <dd class="col-sm-9">@Model.Category</dd>
+
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Submission Time</dt>
+                <dd class="col-sm-9">@Model.SubmissionTimestamp.ToString("g")</dd>
+
+                <dt class="col-sm-3">Media Attachments</dt>
+                <dd class="col-sm-9">
+                    @if (Model.MediaAttachments.Any())
+                    {
+                        <ul class="list-unstyled">
+                            @foreach (var attachment in Model.MediaAttachments)
+                            {
+                                <li>
+                                    @if (attachment.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) || attachment.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        <img src="@attachment" alt="Attachment" class="img-fluid mb-2" style="max-width: 200px;" />
+                                    }
+                                    else
+                                    {
+                                        <a href="@attachment" target="_blank" class="btn btn-link">View @System.IO.Path.GetFileName(attachment)</a>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No attachments provided.</p>
+                    }
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-animated">Back to Main Menu</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

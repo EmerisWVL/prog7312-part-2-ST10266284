@@ -1,0 +1,23 @@
+﻿@* Main menu page *@
+@{
+    ViewData["Title"] = "Municipal Services App";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4 text-primary animate__animated animate__fadeIn">Welcome to Municipal Services</h1>
+    <p class="lead text-muted animate__animated animate__fadeIn animate__delay-1s">Engage with your municipality to
+        report issues and stay informed.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4 mb-3">
+            <a href="@Url.Action("ReportIssue", "Home")" class="btn btn-primary btn-lg btn-block btn-animated">Report
+                Issues</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <button class="btn btn-secondary btn-lg btn-block" disabled>Local Events and Announcements</button>
+        </div>
+        <div class="col-md-4 mb-3">
+            <button class="btn btn-secondary btn-lg btn-block" disabled>Service Request Status</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+@model MunicipalServicesApp.Models.Report
+@{
+    ViewData["Title"] = "Report an Issue";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary animate__animated animate__fadeIn">Report an Issue</h2>
+    <form asp-action="ReportIssue" method="post" enctype="multipart/form-data" id="reportForm">
+        <div class="form-group mb-3">
+            <label asp-for="Location" class="form-label">Location</label>
+            <input asp-for="Location" class="form-control" placeholder="Enter the location of the issue" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Category" class="form-label">Category</label>
+            <select asp-for="Category" class="form-control">
+                <option value="">Select a category</option>
+                <option value="Sanitation">Sanitation</option>
+                <option value="Roads">Roads</option>
+                <option value="Utilities">Utilities</option>
+            </select>
+            <span asp-validation-for="Category" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Describe the issue in detail"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label">Attach Media</label>
+            <input type="file" name="mediaAttachments" multiple class="form-control" accept=".jpg,.png,.pdf,.docx" />
+        </div>
+
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary btn-animated">Submit</button>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-animated ms-2">Back to Main Menu</a>
+        </div>
+
+        <div id="progressContainer" class="progress mt-3 d-none">
+            <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show animate__animated animate__bounceIn" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#reportForm').on('submit', function () {
+                $('#progressContainer').removeClass('d-none');
+                let width = 0;
+                let interval = setInterval(function () {
+                    width += 10;
+                    $('#progressBar').css('width', width + '%');
+                    if (width >= 100) {
+                        clearInterval(interval);
+                    }
+                }, 200);
+            });
+        });
+    </script>
+}

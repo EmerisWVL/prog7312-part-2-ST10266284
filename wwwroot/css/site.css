@@ -1,0 +1,48 @@
+/* Custom styles for Municipal Services App */
+body {
+  background-color: #f0f4f8;
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.btn-animated {
+  transition: all 0.3s ease;
+}
+
+.btn-animated:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-control,
+.btn {
+  border-radius: 8px;
+}
+
+.alert {
+  border-radius: 8px;
+}
+
+.progress {
+  height: 20px;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .container {
+    padding: 10px;
+  }
+
+  .btn-lg {
+    font-size: 1rem;
+  }
+
+  h1.display-4 {
+    font-size: 2rem;
+  }
+}
