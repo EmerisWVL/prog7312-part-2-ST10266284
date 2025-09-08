@@ -1,0 +1,28 @@
+# .NET Core
+bin/
+obj/
+*.csproj.user
+*.suo
+*.cache
+*.pdb
+*.user
+*.userosccache
+*.log
+*.db
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+*.sln
+*.suo
+
+# User-uploaded files (optional, remove this line if you want to commit sample uploads for testing)
+wwwroot/uploads/*
+
+# Other common ignores
+[Dd]ebug/
+[Rr]elease/
+*.DS_Store
+Thumbs.db
