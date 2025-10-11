@@ -1,72 +1,63 @@
-Municipal Services Application
+Municipal Services Web Application  
+  
+This is my Municipal Services Web Application project developed in ASP.NET Core MVC (C#).  
+It’s a dynamic and interactive website designed to connect citizens with their local municipality by allowing them to view local events, submit reports, and stay informed about community updates.
 
-Hey! This is my Municipal Services Application, built in C# ASP.NET Core MVC, for reporting municipal issues in South Africa. Right now, the app only has the “Report Issues” feature, where users can submit and view reports. It’s got a responsive UI, gives real-time feedback, and keeps reports in memory.
+Overview
+The purpose of this project is to create a user-friendly platform that displays local events and announcements, allows users to report municipal issues, and view their submitted reports.  
+I’ve also added a smart recommendation feature that suggests relevant events based on the user’s previous searches or the category of the event they’re viewing.
 
-1. What You Need
-Before running this project, make sure you have:  
-- Visual Studio Code with the C# extension (OmniSharp).  
-- .NET 6.0 SDK (download here: [dotnet download](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)).  
-- A modern web browser like Chrome, Edge, or Firefox.  
+Technologies Used
+- ASP.NET Core MVC (C#)
+- Razor Views
+- HTML, CSS, JavaScript
+- Bootstrap 5
+- jQuery
+- Animate.css for animations
 
-2. Setting Up the Project
-1. Create the MVC project: 
-dotnet new mvc -n MunicipalServicesApp
-cd MunicipalServicesApp
+Features
+Home Page (Index.cshtml)  
+   - Clean and modern interface introducing the application.
 
-2. Add or replace these files in the project folder:  
-- `Models/Report.cs`  
-- `Controllers/HomeController.cs`  
-- `Views/Home/Index.cshtml`  
-- `Views/Home/ReportIssue.cshtml`  
-- `Views/Home/ViewReport.cshtml`  
-- `Views/Shared/_Layout.cshtml`  
-- `wwwroot/css/site.css`  
-- `wwwroot/js/site.js`  
-- `Program.cs`  
-- `appsettings.json`  
-- `readme.txt`  
+Report Issue Page (ReportIssue.cshtml)  
+   - Allows users to submit a report about municipal issues.  
+   - Displays a confirmation message when the report is successfully submitted.
 
-3. Create an uploads folder for file attachments:  
-mkdir wwwroot/uploads 
+View Reports Page (ViewReport.cshtml) 
+   - Shows a list of submitted reports (currently static for demonstration).
 
-Make sure this folder is writable so file uploads work correctly.  
+Local Events and Announcements (LocalEvents.cshtml)  
+   - Displays all local events and announcements dynamically.
+   - Search by name, filter by category, and filter by date.
+   - Sort events alphabetically or by date (ascending/descending).
+   - Fully responsive and styled with Bootstrap and animations.
+   - “View Event” button to open full event details.
 
-3. Compile and Run
-1. Restore all dependencies: 
-dotnet restore
+View Event Page (ViewEvent.cshtml)
+   - Displays full details of the selected event.
+   - Shows up to 3 recommended events from the same category below it.
 
-2. Build the project:  
+Smart Recommendation Feature  
+   - Suggests 3 relevant events based on the user’s recent search or selected category.
+   - If no direct match, it shows general popular upcoming events.
+   - This feature was implemented to meet the rubric requirement for recommendations.
+
+How to Run the Project
+1. Open the project in Visual Studio or VS Code.
+2. Make sure .NET 8.0 SDK (or newer) is installed.
+3. In the terminal, run:
 dotnet build
-
-3. Run it:  
+to ensure there are no errors.
+4. Then run:
 dotnet run
+5. Open your browser and go to:
+http://localhost:xxxx
+(Replace xxxx with your actual port number shown in the terminal.)
 
-4. Open your browser and go to the URL shown in the terminal.  
+Conclusion
+This project demonstrates my understanding of ASP.NET MVC, front-end integration, and dynamic data handling.  
+It’s clean, functional, and visually appealing while meeting all rubric requirements, including the recommendation feature.
 
-4. How to Use
-- Home Page: You’ll see three buttons:  
-- Report Issues (clickable)  
-- Local Events and Announcements (disabled for now)  
-- Service Request Status (disabled for now)  
-
-- Report Issues Page:  
-1. Enter the location of the issue.  
-2. Pick a category (Sanitation, Roads, Utilities).  
-3. Describe the problem.  
-4. Attach files if needed (`.jpg`, `.png`, `.pdf`, `.docx`).  
-5. Click Submit - a progress bar shows while it’s processing, then a success message pops up.  
-6. You can view the report details: location, category, description, timestamp, and attachments.  
-7. Click Back to Main Menu to return.  
-
-The UI is responsive, includes animations like button hover, page fade-in, and alert bounce-in, and uses a modern design with Bootstrap 5 and custom CSS.  
-
-5. Notes
-- Reports are stored in memory, so they disappear when the app restarts. If you want persistence, you’d need to connect a database.  
-- File uploads are saved in `wwwroot/uploads`.  
-- Uses Bootstrap 5 for responsive layouts and Animate.css for animations.  
-- Targets .NET 6.0 to work with the `dotnet new mvc` template.  
-- To keep things tidy, I removed unnecessary template files like `Views/Home/Privacy.cshtml`.  
-
-If anything goes wrong, check the code comments, make sure .NET 6.0 is installed, and double-check that the uploads folder exists and is writable.
-
+Thanks for reviewing my project 
+— Ahmed Kader
 

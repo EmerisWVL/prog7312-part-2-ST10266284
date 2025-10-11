@@ -20,9 +20,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link disabled">Events</a></li>
-                        <li class="nav-item"><a class="nav-link disabled">Status</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["Title"].ToString() == "Municipal Services App" ? "active" : "")"
+                                href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["Title"].ToString().Contains("Event") ? "active" : "")"
+                                href="@Url.Action("LocalEvents", "Home")">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled">Service Status</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -33,7 +41,7 @@
         @RenderBody()
     </main>
 
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
         <p>&copy; 2025 Municipal Services App. All rights reserved.</p>
     </footer>
 

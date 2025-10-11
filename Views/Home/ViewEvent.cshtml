@@ -1,0 +1,20 @@
+@model MunicipalServicesApp.Models.Event
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-primary mb-4">Event Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title">@Model.Name</h3>
+            <h5 class="card-subtitle mb-2 text-muted">@Model.Category</h5>
+            <p class="card-text">@Model.Description</p>
+            <p class="text-secondary">Date: @Model.Date.ToString("dd MMM yyyy")</p>
+        </div>
+        <div class="card-footer text-end">
+            <a href="@Url.Action("LocalEvents", "Home")" class="btn btn-secondary btn-animated">Back to Events</a>
+        </div>
+    </div>
+</div>

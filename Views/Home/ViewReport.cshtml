@@ -14,55 +14,69 @@
         </div>
     }
 
-    <div class="card mt-4 animate__animated animate__fadeInUp">
-        <div class="card-header bg-primary text-white">
-            <h5>Report Details</h5>
+    @if (Model == null)
+    {
+        <div class="alert alert-warning">
+            Sorry — the report you requested could not be found or may have been removed.
         </div>
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Location</dt>
-                <dd class="col-sm-9">@Model.Location</dd>
-
-                <dt class="col-sm-3">Category</dt>
-                <dd class="col-sm-9">@Model.Category</dd>
-
-                <dt class="col-sm-3">Description</dt>
-                <dd class="col-sm-9">@Model.Description</dd>
-
-                <dt class="col-sm-3">Submission Time</dt>
-                <dd class="col-sm-9">@Model.SubmissionTimestamp.ToString("g")</dd>
-
-                <dt class="col-sm-3">Media Attachments</dt>
-                <dd class="col-sm-9">
-                    @if (Model.MediaAttachments.Any())
-                    {
-                        <ul class="list-unstyled">
-                            @foreach (var attachment in Model.MediaAttachments)
-                            {
-                                <li>
-                                    @if (attachment.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) || attachment.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
-                                    {
-                                        <img src="@attachment" alt="Attachment" class="img-fluid mb-2" style="max-width: 200px;" />
-                                    }
-                                    else
-                                    {
-                                        <a href="@attachment" target="_blank" class="btn btn-link">View @System.IO.Path.GetFileName(attachment)</a>
-                                    }
-                                </li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p>No attachments provided.</p>
-                    }
-                </dd>
-            </dl>
-        </div>
-        <div class="card-footer">
+        <div>
             <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-animated">Back to Main Menu</a>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="card mt-4 animate__animated animate__fadeInUp">
+            <div class="card-header bg-primary text-white">
+                <h5>Report Details</h5>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">Location</dt>
+                    <dd class="col-sm-9">@Model.Location</dd>
+
+                    <dt class="col-sm-3">Category</dt>
+                    <dd class="col-sm-9">@Model.Category</dd>
+
+                    <dt class="col-sm-3">Description</dt>
+                    <dd class="col-sm-9">@Model.Description</dd>
+
+                    <dt class="col-sm-3">Submission Time</dt>
+                    <dd class="col-sm-9">@Model.SubmissionTimestamp.ToString("g")</dd>
+
+                    <dt class="col-sm-3">Media Attachments</dt>
+                    <dd class="col-sm-9">
+                        @if (Model.MediaAttachments != null && Model.MediaAttachments.Any())
+                        {
+                            <ul class="list-unstyled">
+                                @foreach (var attachment in Model.MediaAttachments)
+                                {
+                                    <li>
+                                        @if (attachment.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+                                                                    attachment.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            <img src="@attachment" alt="Attachment" class="img-fluid mb-2" style="max-width: 200px;" />
+                                        }
+                                        else
+                                        {
+                                            <a href="@attachment" target="_blank" class="btn btn-link">View
+                                                @System.IO.Path.GetFileName(attachment)</a>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No attachments provided.</p>
+                        }
+                    </dd>
+                </dl>
+            </div>
+            <div class="card-footer">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-secondary btn-animated">Back to Main Menu</a>
+            </div>
+        </div>
+    }
 </div>
 
 @section Scripts {
